@@ -1,5 +1,7 @@
 # 📊 Calculadora de Metas - Desempenho Operacional
 
+![{E0528BC9-E13E-4515-9418-4F0ADBDB5A66}](https://github.com/user-attachments/assets/d82059d1-b136-4d50-8995-b8140ec9a8c1)
+
 ## Visão Geral do Projeto
 
 #### Este projeto é uma ferramenta de produtividade desenvolvida com o objetivo de capacitar colaboradores a monitorar seu desempenho operacional diário e projetar a quantidade de trabalho necessária para alcançar suas metas mensais de processos. A aplicação fornece uma visão clara da média atual de processos por dia e calcula o número de processos adicionais necessários para atingir a meta estabelecida, promovendo um planejamento mais eficaz e a gestão do tempo.
