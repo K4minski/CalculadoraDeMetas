@@ -1,41 +1,51 @@
-// A função calcMeta permanece a mesma, apenas certifique-se de que ela está neste arquivo.
 function calcMeta() {
-    const processosFeitos = document.getElementById("processosFeitos").value;
-    const meta = document.getElementById("meta").value;
-    const diasTrabalhados = document.getElementById("diasTrabalhados").value;
-    const diasUteis = document.getElementById("diasUteis").value;
-
-    const numProcessosFeitos = parseInt(processosFeitos);
-    const numMeta = parseInt(meta);
-    const numDiasTrabalhados = parseInt(diasTrabalhados);
-    const numDiasUteis = parseInt(diasUteis);
-
+    const processosFeitos = parseInt(document.getElementById("processosFeitos").value);
+    const meta = parseInt(document.getElementById("meta").value);
+    const diasTrabalhados = parseInt(document.getElementById("diasTrabalhados").value);
+    const diasUteis = parseInt(document.getElementById("diasUteis").value);
     const resultado = document.getElementById("resultado");
 
-    if (isNaN(numProcessosFeitos) || isNaN(numMeta) || isNaN(numDiasUteis)) {
+    if (isNaN(processosFeitos) || isNaN(meta) || isNaN(diasTrabalhados) || isNaN(diasUteis)) {
         resultado.textContent = "Erro: Por favor, insira apenas números válidos.";
         resultado.style.color = "red";
         return;
     }
-    if (numDiasUteis <= 0 || numDiasUteis > 31) {
+    if (diasUteis <= 0 || diasUteis > 31) {
         resultado.textContent = "Erro: O número de dias úteis deve ser entre 1 e 31.";
         resultado.style.color = "red";
         return;
     }
 
-    let mediaAtual = (numProcessosFeitos / numDiasTrabalhados).toFixed(2)
-    let atingirMeta = (numMeta * numDiasUteis) - numProcessosFeitos;
+    const totalNecessario = meta * diasUteis;
+    const processosRestantes = totalNecessario - processosFeitos;
+    const diasRestantes = diasUteis - diasTrabalhados;
+    const mediaAtual = (processosFeitos / diasTrabalhados).toFixed(2);
 
-    const resultMessage = `A sua média atual é de ${mediaAtual} processos por dia. Para atingir a meta de ${meta} processos por dia você precisará fazer mais ${atingirMeta} processos.`;
-    resultado.textContent = resultMessage;
+    let mensagem;
+
+    if (processosRestantes <= 0) {
+        mensagem =
+            `- Parabéns! Você atingiu a meta do mês.<br>` +
+            `- Sua média atual é de ${mediaAtual} processos por dia.<br>`;
+    } else if (diasRestantes <= 0) {
+        mensagem =
+            `- O mês acabou e faltaram ${processosRestantes} processos pra bater a meta.<br>` +
+            `- Média atual: ${mediaAtual} processos por dia.<br>`;
+    } else {
+        const mediaNecessaria = (processosRestantes / diasRestantes).toFixed(2);
+        mensagem =
+            `- Sua média atual é de ${mediaAtual} processos por dia.<br>` +
+            `- Para atingir a meta de ${meta}, você precisará fazer uma média de ${mediaNecessaria} processos por dia nos ${diasRestantes} dias restantes.<br>`;
+    }
+
+    resultado.innerHTML = mensagem;
+    resultado.style.color = "black";
 }
 
-// NOVO: Adiciona um event listener ao botão
-// document.addEventListener('DOMContentLoaded', ...) garante que o script só tentará acessar os elementos HTML
-// depois que toda a página HTML for carregada.
-document.addEventListener('DOMContentLoaded', function() {
+// Garante que o botão funcione depois do carregamento da página
+document.addEventListener('DOMContentLoaded', function () {
     const calcularBtn = document.getElementById('calcularBtn');
-    if (calcularBtn) { // Verifica se o botão realmente existe
+    if (calcularBtn) {
         calcularBtn.addEventListener('click', calcMeta);
     }
 });

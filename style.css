@@ -80,7 +80,7 @@ input[type="number"]:focus {
 }
 
 button {
-    background-color: #28a745;
+    background-color: #022195;
     color: white;
     padding: 14px 25px;
     border: none;
@@ -95,7 +95,7 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #007bff;
     transform: translateY(-2px);
 }
 
@@ -105,11 +105,14 @@ button:active {
 }
 
 .resultado {
-    margin-top: 5px; /* Ajustado para um pouco menos de espaço se o botão já tiver margin-bottom */
+    margin-top: 5px;
     font-size: 1.1em;
     font-weight: 700;
     color: #333;
     min-height: 1.2em;
+    text-align: left;
+    word-break: break-word;    /* Garante quebra de linha em palavras longas */
+    white-space: normal;       /* Garante que o texto quebre normalmente */
 }
 
 /* Responsive adjustments */
@@ -131,13 +134,13 @@ button:active {
 
 .footer {
     margin-top: 10px;
-    font-size: 1.15em; /* Reduzido o font-size do footer para ser menos proeminente */
+    font-size: 0.75em; /* Reduzido o font-size do footer para ser menos proeminente */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #555; /* Cor um pouco mais suave para o texto do rodapé */
 }
 
 .footer img {
-    max-width: 24px; /* Reduzido o tamanho do ícone do GitHub para combinar com o texto */
+    max-width: 18px; /* Reduzido o tamanho do ícone do GitHub para combinar com o texto */
     height: auto;
     vertical-align: middle;
     margin-right: 5px;
